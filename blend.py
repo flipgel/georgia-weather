@@ -20,7 +20,7 @@ def get_consensus(city, target_date):
     c.execute(
         """SELECT * FROM forecasts
         WHERE city=? AND target_date=?
-        AND fetched_at = (SELECT MAX(fetched_at) FROM forecasts WHERE city=?)
+        AND fetched_at >= (SELECT datetime(MAX(fetched_at), '-30 minutes') FROM forecasts WHERE city=?)
         ORDER BY model""",
         (city, target_date, city),
     )

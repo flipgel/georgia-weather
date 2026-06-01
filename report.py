@@ -98,7 +98,7 @@ def build():
             c.execute(
                 """SELECT model, temp_max, temp_min, precipitation FROM forecasts
                 WHERE city=? AND target_date=?
-                AND fetched_at = (SELECT MAX(fetched_at) FROM forecasts WHERE city=?)""",
+                AND fetched_at >= (SELECT datetime(MAX(fetched_at), '-30 minutes') FROM forecasts WHERE city=?)""",
                 (city, d, city),
             )
             rows = {r["model"]: dict(r) for r in c.fetchall()}
