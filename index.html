@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Georgia Weather Consensus</title>
+<style>
+  :root { --bg:#f7fafc; --card:#fff; --accent:#2b6cb0; --good:#c6f6d5; --text:#2d3748; }
+  body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,sans-serif; background:var(--bg); color:var(--text); margin:0; padding:20px; }
+  h1 { margin:0 0 5px; font-size:1.6rem; }
+  .subtitle { color:#718096; font-size:0.9rem; margin-bottom:18px; }
+  .tabs { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:12px; }
+  .tab { padding:8px 14px; background:#e2e8f0; border-radius:6px 6px 0 0; cursor:pointer; border:none; font-size:0.9rem; }
+  .tab.active { background:var(--accent); color:#fff; }
+  .panel { display:none; background:var(--card); padding:18px; border-radius:0 6px 6px 6px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+  .panel.active { display:block; }
+  table { border-collapse:collapse; width:100%; font-size:0.88rem; margin-top:10px; }
+  th, td { border:1px solid #e2e8f0; padding:7px 5px; text-align:center; }
+  th { background:#edf2f7; }
+  tr:nth-child(even) { background:#f7fafc; }
+  .consensus { background:var(--good); font-weight:700; }
+  .num { font-variant-numeric: tabular-nums; }
+  .small { font-size:0.78rem; color:#718096; }
+  .section { margin-top:22px; }
+  .section h3 { margin:0 0 8px; font-size:1rem; }
+</style>
+</head>
+<body>
+<h1>🌤️ Georgia Weather Consensus Engine</h1>
+<p class="subtitle">Last updated: 2026-06-01 16:06 &nbsp;|&nbsp; Models: 6 global + yr.no &nbsp;|&nbsp; Click a city tab below</p>
+<div class="tabs"><button class="tab" id="tab-Tbilisi" class="active" onclick="showTab('Tbilisi')">Tbilisi</button>
+<button class="tab" id="tab-Kutaisi" onclick="showTab('Kutaisi')">Kutaisi</button>
+<button class="tab" id="tab-Batumi" onclick="showTab('Batumi')">Batumi</button>
+<button class="tab" id="tab-Rustavi" onclick="showTab('Rustavi')">Rustavi</button>
+<button class="tab" id="tab-Gori" onclick="showTab('Gori')">Gori</button>
+<button class="tab" id="tab-Zugdidi" onclick="showTab('Zugdidi')">Zugdidi</button>
+<button class="tab" id="tab-Poti" onclick="showTab('Poti')">Poti</button>
+<button class="tab" id="tab-Telavi" onclick="showTab('Telavi')">Telavi</button>
+<button class="tab" id="tab-Akhaltsikhe" onclick="showTab('Akhaltsikhe')">Akhaltsikhe</button>
+<button class="tab" id="tab-Mestia" onclick="showTab('Mestia')">Mestia</button>
+</div>
+<div class="panel" id="panel-Tbilisi" class="active">
+<h2>Tbilisi</h2>
+<div class="section"><h3>10-Day Forecast</h3><table><tr><th>Date</th><th>Consensus</th><th>ecmwf_ifs04</th><th>gfs_global</th><th>icon_global</th><th>ukmo_global_default</th><th>meteofrance_arpege_world</th><th>gem_global</th><th>yr.no</th></tr>
+<tr><td>2026-06-01</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-02</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-03</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-04</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-05</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-06</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-07</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-08</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-09</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-10</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table></div>
+<div class="section"><p class="small">No accuracy scores yet. Run <code>python verify.py</code> after collecting a few days of data. The consensus will then auto-weight the best models for this city.</p></div>
+</div>
+<div class="panel" id="panel-Kutaisi">
+<h2>Kutaisi</h2>
+<div class="section"><h3>10-Day Forecast</h3><table><tr><th>Date</th><th>Consensus</th><th>ecmwf_ifs04</th><th>gfs_global</th><th>icon_global</th><th>ukmo_global_default</th><th>meteofrance_arpege_world</th><th>gem_global</th><th>yr.no</th></tr>
+<tr><td>2026-06-01</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-02</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-03</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-04</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-05</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-06</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-07</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-08</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-09</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-10</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table></div>
+<div class="section"><p class="small">No accuracy scores yet. Run <code>python verify.py</code> after collecting a few days of data. The consensus will then auto-weight the best models for this city.</p></div>
+</div>
+<div class="panel" id="panel-Batumi">
+<h2>Batumi</h2>
+<div class="section"><h3>10-Day Forecast</h3><table><tr><th>Date</th><th>Consensus</th><th>ecmwf_ifs04</th><th>gfs_global</th><th>icon_global</th><th>ukmo_global_default</th><th>meteofrance_arpege_world</th><th>gem_global</th><th>yr.no</th></tr>
+<tr><td>2026-06-01</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-02</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-03</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-04</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-05</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-06</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-07</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-08</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-09</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-10</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table></div>
+<div class="section"><p class="small">No accuracy scores yet. Run <code>python verify.py</code> after collecting a few days of data. The consensus will then auto-weight the best models for this city.</p></div>
+</div>
+<div class="panel" id="panel-Rustavi">
+<h2>Rustavi</h2>
+<div class="section"><h3>10-Day Forecast</h3><table><tr><th>Date</th><th>Consensus</th><th>ecmwf_ifs04</th><th>gfs_global</th><th>icon_global</th><th>ukmo_global_default</th><th>meteofrance_arpege_world</th><th>gem_global</th><th>yr.no</th></tr>
+<tr><td>2026-06-01</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-02</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-03</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-04</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-05</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-06</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-07</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-08</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-09</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-10</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table></div>
+<div class="section"><p class="small">No accuracy scores yet. Run <code>python verify.py</code> after collecting a few days of data. The consensus will then auto-weight the best models for this city.</p></div>
+</div>
+<div class="panel" id="panel-Gori">
+<h2>Gori</h2>
+<div class="section"><h3>10-Day Forecast</h3><table><tr><th>Date</th><th>Consensus</th><th>ecmwf_ifs04</th><th>gfs_global</th><th>icon_global</th><th>ukmo_global_default</th><th>meteofrance_arpege_world</th><th>gem_global</th><th>yr.no</th></tr>
+<tr><td>2026-06-01</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-02</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-03</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-04</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-05</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-06</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-07</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-08</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-09</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-10</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table></div>
+<div class="section"><p class="small">No accuracy scores yet. Run <code>python verify.py</code> after collecting a few days of data. The consensus will then auto-weight the best models for this city.</p></div>
+</div>
+<div class="panel" id="panel-Zugdidi">
+<h2>Zugdidi</h2>
+<div class="section"><h3>10-Day Forecast</h3><table><tr><th>Date</th><th>Consensus</th><th>ecmwf_ifs04</th><th>gfs_global</th><th>icon_global</th><th>ukmo_global_default</th><th>meteofrance_arpege_world</th><th>gem_global</th><th>yr.no</th></tr>
+<tr><td>2026-06-01</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-02</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-03</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-04</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-05</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-06</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-07</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-08</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-09</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-10</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table></div>
+<div class="section"><p class="small">No accuracy scores yet. Run <code>python verify.py</code> after collecting a few days of data. The consensus will then auto-weight the best models for this city.</p></div>
+</div>
+<div class="panel" id="panel-Poti">
+<h2>Poti</h2>
+<div class="section"><h3>10-Day Forecast</h3><table><tr><th>Date</th><th>Consensus</th><th>ecmwf_ifs04</th><th>gfs_global</th><th>icon_global</th><th>ukmo_global_default</th><th>meteofrance_arpege_world</th><th>gem_global</th><th>yr.no</th></tr>
+<tr><td>2026-06-01</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-02</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-03</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-04</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-05</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-06</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-07</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-08</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-09</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-10</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table></div>
+<div class="section"><p class="small">No accuracy scores yet. Run <code>python verify.py</code> after collecting a few days of data. The consensus will then auto-weight the best models for this city.</p></div>
+</div>
+<div class="panel" id="panel-Telavi">
+<h2>Telavi</h2>
+<div class="section"><h3>10-Day Forecast</h3><table><tr><th>Date</th><th>Consensus</th><th>ecmwf_ifs04</th><th>gfs_global</th><th>icon_global</th><th>ukmo_global_default</th><th>meteofrance_arpege_world</th><th>gem_global</th><th>yr.no</th></tr>
+<tr><td>2026-06-01</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-02</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-03</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-04</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-05</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-06</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-07</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-08</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-09</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-10</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table></div>
+<div class="section"><p class="small">No accuracy scores yet. Run <code>python verify.py</code> after collecting a few days of data. The consensus will then auto-weight the best models for this city.</p></div>
+</div>
+<div class="panel" id="panel-Akhaltsikhe">
+<h2>Akhaltsikhe</h2>
+<div class="section"><h3>10-Day Forecast</h3><table><tr><th>Date</th><th>Consensus</th><th>ecmwf_ifs04</th><th>gfs_global</th><th>icon_global</th><th>ukmo_global_default</th><th>meteofrance_arpege_world</th><th>gem_global</th><th>yr.no</th></tr>
+<tr><td>2026-06-01</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-02</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-03</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-04</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-05</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-06</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-07</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-08</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-09</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-10</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table></div>
+<div class="section"><p class="small">No accuracy scores yet. Run <code>python verify.py</code> after collecting a few days of data. The consensus will then auto-weight the best models for this city.</p></div>
+</div>
+<div class="panel" id="panel-Mestia">
+<h2>Mestia</h2>
+<div class="section"><h3>10-Day Forecast</h3><table><tr><th>Date</th><th>Consensus</th><th>ecmwf_ifs04</th><th>gfs_global</th><th>icon_global</th><th>ukmo_global_default</th><th>meteofrance_arpege_world</th><th>gem_global</th><th>yr.no</th></tr>
+<tr><td>2026-06-01</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-02</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-03</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-04</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-05</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-06</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-07</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-08</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-09</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2026-06-10</td><td class="consensus">-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table></div>
+<div class="section"><p class="small">No accuracy scores yet. Run <code>python verify.py</code> after collecting a few days of data. The consensus will then auto-weight the best models for this city.</p></div>
+</div>
+
+<script>
+function showTab(cid) {
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+cid).classList.add('active');
+  document.getElementById('tab-'+cid).classList.add('active');
+}
+</script>
+</body>
+</html>
